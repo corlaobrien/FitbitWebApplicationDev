@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="col-md-12" style="margin-top: 20px; text-align:center;">
+    <img src="~/Content/Front Picture.png" style="width: 99%;" />
+    
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Data Stream</h2>
+        <p>
+            Using Fitbit data stream to generate intuitive heart rate charts.
+        </p>
+        <p><a class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("Dashboard", "Home")'">Learn more &raquo;</a></p>
+
+        <p><a class="btn btn-default" onclick="location.href='@Url.Action("Authorize", "Home")'">Login to Fitbit</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Analysis</h2>
+        <p>Performing analysis on data collected to visualise trends and problem areas.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Results</h2>
+        <p>Generating dashboards to drive improvements</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>

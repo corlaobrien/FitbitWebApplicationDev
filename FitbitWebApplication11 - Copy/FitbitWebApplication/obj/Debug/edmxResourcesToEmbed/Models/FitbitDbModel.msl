@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CloudFitbitDbModelStoreContainer" CdmEntityContainer="CloudFitbitDbEntities">
+    <EntitySetMapping Name="Annotations">
+      <EntityTypeMapping TypeName="CloudFitbitDbModel.Annotation">
+        <MappingFragment StoreEntitySet="Annotation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DateTimeStart" ColumnName="DateTimeStart" />
+          <ScalarProperty Name="DateTimeEnd" ColumnName="DateTimeEnd" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Tags" ColumnName="Tags" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempTables">
+      <EntityTypeMapping TypeName="CloudFitbitDbModel.TempTable">
+        <MappingFragment StoreEntitySet="TempTable">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="CloudFitbitDbModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="OccupationType" ColumnName="OccupationType" />
+          <ScalarProperty Name="County" ColumnName="County" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="AutoSync" ColumnName="AutoSync" />
+          <ScalarProperty Name="RefreshToken" ColumnName="RefreshToken" />
+          <ScalarProperty Name="TokenType" ColumnName="TokenType" />
+          <ScalarProperty Name="AccessToken" ColumnName="AccessToken" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SuperUsers">
+      <EntityTypeMapping TypeName="CloudFitbitDbModel.SuperUser">
+        <MappingFragment StoreEntitySet="SuperUser">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SuperUserId" ColumnName="SuperUserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SuperUser_User">
+      <EntityTypeMapping TypeName="CloudFitbitDbModel.SuperUser_User">
+        <MappingFragment StoreEntitySet="SuperUser_User">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SuperUserId" ColumnName="SuperUserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spRemoveSuperUserToUserRelationship" FunctionName="CloudFitbitDbModel.Store.spRemoveSuperUserToUserRelationship" />
+    <EntitySetMapping Name="SuperUserUserTypes">
+      <EntityTypeMapping TypeName="CloudFitbitDbModel.SuperUserUserType">
+        <MappingFragment StoreEntitySet="SuperUserUserTypes">
+          <ScalarProperty Name="UserTypes" ColumnName="UserTypes" />
+          <ScalarProperty Name="SuperUserId" ColumnName="SuperUserId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

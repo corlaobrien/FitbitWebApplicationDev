@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "HeartRateChart";
+}
+
+@section Style {
+    @Styles.Render("~/Content/css/chartHomeViewModel")
+}
+
+<div id="heartRateContainer">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="position:absolute;top:50px;height:40px;min-height:40px;border-color: #D8D8D8;
+    background: #E8E8E8; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#E8E8E8, #D8D8D8); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#E8E8E8, #D8D8D8); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#E8E8E8, #D8D8D8); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#E8E8E8, #D8D8D8);">
+        <div class="container-fluid">
+
+            @*<p class="col-md-5 col-lg-5 col-sm-5 col-lg-offset-1 col-md-offset-1 col-sm-offset-1" style="padding-top: 10px;">Date: 03/02/2017</p>*@
+
+            <select id="userDropdown" multiple="multiple" class="pull-right">
+                <!-- ko foreach: users() -->
+                <option data-bind="text: emailAddress"></option>
+                <!-- /ko -->
+            </select>
+
+
+            @*<div class="col-lg-offset-1 col-lg-2">
+        <b style="font-size: 14px;margin-top:2px;">Users:</b>
+        <select id="userDropdown" multiple="multiple">
+            <!-- ko foreach: users -->
+            <option data-bind="text: $data"></option>
+            <!-- /ko -->
+        </select>
+    </div>*@
+
+            <button type="button" class="btn btn-default pull-right" name="threshold" style="margin-top:6px;" data-bind="click: openThresholdGraph">Threshold Analysis</button>
+
+            @*<input  type="text" id="dateRange" />*@
+            <button type="button" class="btn btn-default pull-right" name="daterange" style="margin-top:6px;" >Data Stream</button>
+            <input type="text" name="daterange" style="margin-top:6px;visibility:hidden;" class="pull-right" value="01/01/2015 - 01/31/2015" />
+
+        </div>
+    </div>
+
+    <div id="trend" style="position:absolute; top:15vh; left: 1vw; width:98vw; height:85vh; background-color: white;">
+
+    </div>
+
+    <div id="thresholdTrend" style="position:absolute; top:15vh; left: 1vw; width:98vw; height:85vh; background-color: white;">
+
+    </div>
+
+    <div id="liveTrend" style="position:absolute; top:15vh; left: 1vw; width:98vw; height:85vh; background-color: white;">
+
+    </div>
+</div>
+

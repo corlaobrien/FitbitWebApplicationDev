@@ -1,0 +1,114 @@
+﻿@model FitbitWebApplication.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Create a new account.</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserType, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.UserType, new SelectList(FitbitWebApplication.Models.UserTypeViewModel.UserTypeList, "UserTypeId", "UserTypeName"), new { @class = "form-control", @id = "userType" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+        </div>
+    </div>
+    @*<div class="form-group">
+        @Html.LabelFor(m => m.Surname, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Surname, new { @class = "form-control" })
+        </div>
+    </div>*@
+    <div class="form-group" id="dob">
+        @Html.LabelFor(m => m.DOB, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.DOB, new { @class = "date-picker form-control" })
+        </div>
+    </div>
+    <div class="form-group" id="gender">
+        @Html.LabelFor(m => m.Gender, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.Gender, new SelectList(FitbitWebApplication.Models.GenderTypeViewModel.GenderTypeList, "GenderTypeName", "GenderTypeName"), new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group" id="occupationType">
+        @Html.LabelFor(m => m.OccupationType, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.OccupationType, new SelectList(FitbitWebApplication.Models.OccupationTypeViewModel.OccupationTypeList, "OccupationTypeName", "OccupationTypeName"), new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        </div>
+    </div>    
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Register" />
+        </div>
+    </div>
+}
+
+@Styles.Render("~/Content/jqueryui")
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")    
+
+    <script>
+        $(document).ready(function () {
+            $("#dob").hide();
+            $("#gender").hide();
+            $("#occupationType").hide();            
+
+            $('.date-picker').datepicker({ changeMonth: true, changeYear: true, yearRange: "1900:1999", dateFormat: "dd-mm-yy" });
+
+            $("#userType").change(function () {
+                if ($(this).val() == 2) {
+                    $("#dob").show();
+                    $("#gender").show();
+                    $("#occupationType").show();
+                } else {
+                    $("#dob").hide();
+                    $("#gender").hide();
+                    $("#occupationType").hide();
+                }
+            });
+
+            //$("#register").on("click", function (event) {
+            //    event.stopImmediatePropagation();
+            //    var x = 5;
+            //});
+
+            function validateMyForm() {
+
+            }
+
+            
+
+        });
+    </script>
+}

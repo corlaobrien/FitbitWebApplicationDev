@@ -1,0 +1,463 @@
+﻿body {
+    padding-bottom: 0px !important;
+}
+
+#heartRateContainer .btn-group {
+    float: right !important;
+    margin-right: 3px !important;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.analysisSettingTable td, .analysisSettingTable tr {
+    border: none !important;
+}
+
+/*svg {
+    shape-rendering: crispEdges;
+}*/
+
+rect {
+  fill: #ddd;
+}
+
+rect.zoom {
+    stroke: steelblue;
+    fill-opacity: 0.5;
+}
+
+/*path .domain {
+    fill: none;
+    stroke: #fff;
+    stroke-width:2;
+    shape-rendering: crispEdges;
+}*/
+
+/*.axis path, .axis line {
+    fill: none;
+    stroke: #fff;
+    stroke-width:2;
+    shape-rendering: crispEdges;
+}*/
+
+.xAxis path, .yAxis path {
+    fill:none;
+	stroke:#A9A9A9;
+    stroke-width: 2;
+    shape-rendering: crispEdges;
+}
+
+.overlay {
+    fill:none;
+    stroke:none;
+    pointer-events:all;
+}
+
+.focusCircle {
+    fill: red;
+    opacity: 1;
+}
+
+#focusLineX, #focusLineY {
+    fill: none;
+    stroke: red;
+    stroke-width: 0.5px;
+}
+
+#liveTrend .axis .domain {
+    fill: none;
+    stroke: black;
+}
+
+#liveTrend .group {
+    fill: none;
+    stroke: black;
+    stroke-width: 1.5px;
+}
+
+.grid .tick {
+    stroke: lightgray;
+    opacity: 0.7;
+}
+.grid path {
+    fill: none;
+    stroke: black;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+#trend path, #thresholdTrend path { 
+    stroke-width: 2;
+    fill: none;
+}
+
+.circle {
+    position: absolute;
+}
+
+canvas {
+    z-index: 1000;
+}
+
+.customTooltip {
+    position:absolute;
+    top: 100px;
+    left: 100px;
+    -moz-border-radius:5px;
+    border-radius: 5px;
+    border: 2px solid #000;
+    /* background: #222222; */ 
+    background: #fff;
+    opacity: .9;
+    /* color: #eeeeee; */
+    color: black;
+    padding: 10px;
+    width: 300px;
+    font-size: 12px;
+    z-index: 101;
+    overflow: hidden;
+}
+
+.customTooltip:after {    
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline;
+  /*font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;*/
+
+  -moz-border-radius:5px;
+    border-radius: 5px;
+    border: 2px solid #000;
+    /* background: #222222; */ 
+    background: #fff;
+    opacity: .9;
+    /* color: #eeeeee; */
+    color: black;
+    padding: 10px;
+    width: 300px;
+    font-size: 12px;
+    z-index: 10;
+}
+
+/* Style northward tooltips differently */
+.customTooltip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+.customTooltip .title {
+    font-size: 13px;
+}
+
+.customTooltip .name {
+    font-weight:bold;
+}
+
+div.smalltooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 60px;					
+    height: 28px;					
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+
+.svg-container {
+    display: inline-block;
+    width: 100%;
+    /*height: inherit;*/
+}
+.svg-content-responsive {
+    display: inline-block;
+    position: -ms-page;
+    vertical-align: bottom;   
+    bottom: 0px;
+    left: 0;
+}
+
+#sliderDiv{
+    float: right;
+    font-size:10px;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { /* CAN ONLY BE PARSED IN IE*/
+   .svg-content-responsive {
+       padding-top: 10%;
+    }
+    #sliderDiv {
+        /*padding-top: 53%;*/
+        float: right;
+        position: relative;
+        margin-bottom: 1%;
+        margin-right: 1%;
+    }
+}
+
+#dialogContainer{
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    overflow: hidden;
+    margin-top: 0px;
+    padding-bottom: 0%;
+    margin-bottom: 0px;
+}
+
+#basicDialog{
+    height: 540px !important; /*530px*/
+}
+
+#basicDialog3{
+    height: 115px !important;
+}
+
+#trend .axis path, #thresholdTrend .axis path, #barChart .axis path, #pieChart .axis path {
+    fill:none;
+	stroke:#737373;
+    stroke-width: 2;
+    shape-rendering: crispEdges;
+}
+
+
+#trend .axis line, #thresholdTrend .axis line, #barChart .axis line, #pieChart .axis line {
+    stroke: lightgray;
+    opacity: 0.7;
+    shape-rendering: crispEdges;
+}
+
+#trend .domain, #thresholdTrend .domain, #barChart .domain, #pieChart .domain {
+    stroke: #737373;
+    stroke-width: 2;
+    opacity: 0.5;
+    shape-rendering: crispEdges;
+}
+
+#trend #axisX .domain, #thresholdTrend #axisX .domain, #barChart #axisX .domain, #pieChart #axisX .domain {
+    fill:none;
+	stroke:#737373;
+    stroke-width: 2;
+    opacity:0.5;
+    shape-rendering: crispEdges;
+}		
+
+#trend #axisY .domain, #thresholdTrend #axisY .domain, #barChart #axisY .domain, #pieChart #axisY .domain {
+    fill:none;
+	stroke:#737373;
+    stroke-width: 2;
+    opacity:0.5;
+    shape-rendering: crispEdges;
+}		
+
+#trend #axisX text, #trend #axisY text, #thresholdTrend #axisX text, #thresholdTrend #axisY text, #barChart #axisX text, #barChart #axisY text, #pieChart #axisX text, #pieChart #axisY text {
+    font-size: 10px;
+}
+
+#trend .axisX text, #trend .axisY text, #thresholdTrend .axisX text, #thresholdTrend .axisY text, #barChart .axisX text, #barChart .axisY text, #pieChart .axisX text, #pieChart .axisY text {
+    font-size: 10px;
+}
+
+#trend #xaxis .domain, #thresholdTrend #xaxis .domain, #barChart #xaxis .domain, #pieChart #xaxis .domain {
+    fill:none;
+	stroke:#737373;
+    stroke-width: 2;
+    opacity:0.5;
+    shape-rendering: crispEdges;
+}	
+
+#trend #yaxis .domain, #thresholdTrend #yaxis .domain, #barChart #yaxis .domain, #pieChart #yaxis .domain {
+    fill:none;
+	stroke:#737373;
+    stroke-width:2;
+    opacity:0.5;
+    shape-rendering: crispEdges;
+}		
+
+#trend #xaxis text, #trend #yaxis text, #thresholdTrend #xaxis text, #thresholdTrend #yaxis text, #barChart #xaxis text, #barChart #yaxis text, #pieChart #xaxis text, #pieChart #yaxis text {
+    font-size: 10px;
+}
+
+#trend .xaxis text, .yaxis text, #trend .yaxisTH text, #thresholdTrend .xaxis text, .yaxis text, #thresholdTrend .yaxisTH text, #barChart .xaxis text, .yaxis text, #barChart .yaxisTH text, #pieChart .xaxis text, #pieChart .yaxis text {
+    font-size: 10px;
+}
+
+#labelXBubble, #labelYBubble, .labelX, .labelY, #labelYTrend, #labelXTrend, #labelYTopHitters, #labelXTopHitters, #labelYadvTopHitters, #labelXadvTopHitters, #labelYAdvancedTrend, #labelXAdvancedTrend {   /*#labelXPie, #labelYPie{*/
+    font-weight: 600;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/*TOOLTIPS*/
+    .line {
+    	border:5px;
+    	z-index:200;
+    	display:table;
+    	border-radius:90px;
+    	/*pointer-events:none;*/
+    	color: rgb(200,200,200);
+    	color: rgba(0,0,0,0.7);
+    }
+    /*.line:hover {
+    	color:#55f;
+    }*/
+    .line2 {
+    	border:3px dotted #051;
+    	opacity: 0.5;
+    	z-index:1;
+    	border-radius:100%;
+    	pointer-events:none;
+    }
+    .fast {
+    	border:3px solid #051;
+    	opacity: 0.5;
+    	z-index:1;
+    	border-radius:100%;
+    	pointer-events:none;
+    }
+    .line3 {
+    	border:7px dashed #951;
+    	opacity: 0.5;
+    	z-index:1;
+    	pointer-events:none;
+    	border-radius:21px;
+    }
+    .line span {
+    	z-index: 1;
+    	background:black;
+    	color: white;
+    	opacity:0.7;
+    	position: absolute;
+    	display:block;
+    	margin: auto;
+    	padding: 0.3em 0.6em;
+    	border-radius:10px;
+    	box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+    }
+    /*.line:hover span {
+    	background: #55f;
+    	opacity:1;
+    }*/
+    .connection-border-right span {
+    	left: 1em;
+    }
+    .connection-border-left span {
+    	right: 1em;
+    }
+    .connection-border-top span {
+    	top: 1em;
+    }
+    .connection-border-bottom span {
+    	bottom: 1em;
+    }
+/*END TOOLTIPS*/
+
+
+#panelDropdownButton {
+    margin-right: 9px;
+}
+
+#trend .overlay, #thresholdTrend .overlay {
+            fill: none;
+            stroke: none;
+            pointer-events: all;
+        }
+
+        #focusLineX, #focusLineY {
+            fill: none;
+            stroke: red;
+            stroke-width: 0.5px;
+        }
+
+        .focusCircle {
+            fill: red;
+            opacity: 1;
+        }
+#trend .line, #trend path, #thresholdTrend .line, #thresholdTrend path, #barChart .line, #barChart path {
+	fill: none;
+    stroke-width: 2px;
+    shape-rendering: auto;
+}
+#thresholdTrend .line {
+    stroke: url(#threshold-gradient);
+}
+#trend .line {
+    stroke: url(#annotation-gradient);
+}
+#trend .axisY line, #trend .axisY path, #thresholdTrend .axisY line, #thresholdTrend .axisY path, #barChart .axisY line, #barChart .axisY path, #pieChart .axisY line, #pieChart .axisY path {
+    opacity:0.5;
+    fill:none;
+	stroke:#737373;
+    stroke-width:2;
+    shape-rendering: crispEdges;
+}
+#trend .axisX line, #trend .axisX path, #thresholdTrend .axisX line, #thresholdTrend .axisX path, #barChart .axisX line, #barChart .axisX path, #pieChart .axisX line, #pieChart .axisX path {
+    opacity:0.5;
+    fill:none;
+	stroke:#737373;
+    stroke-width:2;
+    shape-rendering: crispEdges;
+}
+
+#trend .grid line, #thresholdTrend .grid line, #barChart .grid line, #pieChart .grid line {
+	stroke: #808080; /*#aaa;*/
+	opacity: 0.5;
+	pointer-events: none;
+	stroke-dasharray: 2px, 2px;
+}
+
+#trend path.line, #thresholdTrend path.line, #barChart path.line, #pieChart path.line {
+	stroke-width: 2px;
+	opacity: 0.9;
+}
+
+/*Panel*/
+/*.panel {
+    top: 14vh;
+	width:22vw;
+	float:right;
+	height:83vh;
+    margin: 0px;
+    /*margin-right: 2vw;
+	background:#f2f2f2;
+	position:absolute;
+	/*right:3vw;
+    z-index:-1
+}*/
+
+.no-touch .cd-timeline-navigation a:hover {
+  border-color: #7b9d6f;
+}
+.toolbar-navigation a.inactive {
+  cursor: not-allowed;
+}
+.toolbar-navigation a.inactive::after {
+  background-position: 0 -16px;
+}
+.no-touch .toolbar-navigation a.inactive:hover {
+  border-color: #dfdfdf;
+}
+
+.optDisable{
+    display: none !important;
+}
+
+.optEnable{
+    display: initial !important;
+}
+

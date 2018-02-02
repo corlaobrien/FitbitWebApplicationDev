@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Analysis";
+}
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <br />
+        <p><a class="btn btn-default" onclick="location.href='@Url.Action("User", "Home")'">&laquo; Back</a></p>
+
+        <h2>Analysis</h2>
+
+                <div style="margin: 20px 0; text-align:center;">
+                    <img src="~/Content/Analysis.png" style="width:75%;" />
+
+                </div>
+
+                <p style="text-align:justify;">
+                    Most activity trackers use a PPG sensor to calculate HR. Every time your heart beats, your capillaries expand and contract based on blood volume changes. Green LEDs are placed on the underside of 
+                    the tracker to shine light into the user’s skin and detect the blood volume changes. Algorithms are applied to measure HR automatically and continuously. To generate data relating to step count 
+                    activity trackers use a 3-axis accelerometer to track the user’s motions. An accelerometer is a device that turns movement into digital measurements when attached to the body [14]. Algorithms are
+                    applied to these digital measurements that provide more detailed information about the frequency, duration, intensity and patterns of the movement. These patterns can determine steps taken, 
+                    distance travelled, calories burned and sleep quality.
+                </p>
+
+                <p style="text-align:justify;">
+                    Most activity trackers store the HR and movement related data on the tracker until it is connected to a smartphone via Bluetooth. This connection allows the tracker to sync data to the web
+                    service provided by the manufacturer. Most manufacturers of activity trackers make the data they collect available through an interface in their web service. Any activity tracker whose
+                    data is made available could potentially be used as a data source for this research.
+                </p>
+
+        <p><a class="btn btn-default" onclick="location.href='@Url.Action("Authorize", "Home")'">Login to Fitbit</a></p>
+    </div>
+</div>

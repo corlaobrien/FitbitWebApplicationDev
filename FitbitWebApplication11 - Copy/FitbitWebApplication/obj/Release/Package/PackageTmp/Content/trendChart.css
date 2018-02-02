@@ -1,0 +1,860 @@
+﻿/*.arc text {
+    font: 10px sans-serif;
+    text-anchor: middle;
+}
+
+.arc path {
+    stroke: #fff;
+}
+
+.grid .tick {
+    stroke: lightgray;
+    opacity: 0.7;
+}
+.grid path {
+    fill: none;
+    stroke: black;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}*/
+
+path { 
+    stroke-width: 2;
+    fill: none;
+}
+
+.circle {
+    position: absolute;
+}
+
+canvas {
+    z-index: 1000;
+}
+
+/*.customTooltip {
+    position:absolute;
+    top: 100px;
+    left: 100px;
+    -moz-border-radius:5px;
+    border-radius: 5px;
+    border: 2px solid #000;
+    background: #fff;
+    opacity: .9;
+    color: black;
+    padding: 10px;
+    width: 300px;
+    font-size: 12px;
+    z-index: 101;
+    overflow: hidden;
+}
+
+.customTooltip:after {    
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline;
+
+  -moz-border-radius:5px;
+    border-radius: 5px;
+    border: 2px solid #000;
+    background: #fff;
+    opacity: .9;
+    color: black;
+    padding: 10px;
+    width: 300px;
+    font-size: 12px;
+    z-index: 10;
+}
+
+.customTooltip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+.customTooltip .title {
+    font-size: 13px;
+}
+
+.customTooltip .name {
+    font-weight:bold;
+}
+
+div.smalltooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 60px;					
+    height: 28px;					
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+
+div .ui-rangeSlider-handle{
+	background: red;
+}
+
+.switch {
+text-align:  left;
+display: block;
+box-sizing: border-box;
+width: 40px;
+height: 15px;
+border-radius: 999px;
+background-color: #d8d9db;
+margin-bottom: 3px;
+-webkit-transition: background-color cubic-bezier(.25, .46, .45, .94) .2s;
+-moz-transition: background-color cubic-bezier(.25, .46, .45, .94) .2s;
+transition: background-color cubic-bezier(.25, .46, .45, .94) .2s;
+}
+
+.switch .helper {
+margin-top: 2px;
+margin-left: 2px;
+border-radius: 50%;
+width: 8px;
+height: 8px;
+display: inline-block;
+background-color: #fff;
+cursor: pointer;
+-webkit-transition-property: -webkit-transform;
+-moz-transition-property: -moz-transform;
+transition-property: transform;
+-webkit-transition-duration: .2s;
+-moz-transition-duration: .2s;
+transition-duration: .2s;
+-webkit-transition-timing-function: cubic-bezier(.25, .46, .45, .94);
+-moz-transition-timing-function: cubic-bezier(.25, .46, .45, .94);
+transition-timing-function: cubic-bezier(.25, .46, .45, .94);
+}
+
+.switch.ui-checked {
+border-color: #4cd864;
+background-color: #4cd864
+}
+.switch.ui-checked .helper {
+-webkit-transform: translateX(30px);
+-moz-transform: translateX(30px);
+-ms-transform: translateX(30px);
+-o-transform: translateX(30px);
+transform: translateX(30px)
+}
+
+.fiscal-week{
+    font-weight: bold;
+    display:inline;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    border: none;
+}
+
+.fltrDropDown{
+    float: left;
+    top: 0%;
+    left: 0%;
+    visibility: hidden;
+}
+
+.expBreak{
+    display:none;
+}
+
+#toolbar{
+    width:100%;
+    overflow-wrap:normal;
+}
+
+.date-picker{
+  position: absolute;
+  border: 0px;
+  width: 89%;
+  height: 75%;
+  margin-bottom: 1px;
+  margin-left: 0px;
+  float: left;
+  background: transparent;
+  z-index: 99;
+  cursor:pointer;
+  color: transparent;
+  display: block;
+  font-size: 0px;
+  border: none;
+  text-shadow: 0 0 0 gray;
+  text-align: center;
+}
+
+.datepicker {
+    border-width: 0px !important;
+}
+
+.fiscal-dates {
+    float: left;
+    display: inline;
+}
+
+.datepicker-days{
+    float: right;
+}
+
+.datepicker-week .datepicker tbody tr:hover {
+	background-color: #eee;
+}
+
+.datepicker-week .datepicker tbody tr:hover td,
+.datepicker-week .datepicker tbody tr td.active {
+	border-radius: 0;
+}
+
+.datepicker-week .datepicker tbody tr:hover td:last-child,
+.datepicker-week .datepicker tbody tr td.active:last-child {
+	border-radius: 0 3px 3px 0;
+}
+
+.datepicker-week .datepicker tbody tr:hover td:first-child,
+.datepicker-week .datepicker tbody tr  td.active:nth-child(2) {
+	border-radius: 3px 0 0 3px;
+}
+
+.disp-fiscal{
+  position: absolute;
+  border: 0px;
+  width: 89%;
+  padding-right: 14%;
+  height: 75%;
+  margin-bottom: 1px;
+  margin-left: 0px;
+  float: left;
+  background: #67707F;
+  background: -moz-linear-gradient(top, #67707F 0%, #888DA0 100%); 
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#67707F), color-stop(100%,#888DA0));
+  border: 0px;
+  text-align: center;
+  z-index: 1000;
+  display: block;
+}
+
+#bubbleSvg {
+    /* Fixes bubbles at top of chart in Chrome - bubbles don't get cut off */
+    /*padding-top: 65px;
+    padding-bottom: 50px;
+    padding-right:50px;*/
+}*/
+
+.svg-container {
+    display: inline-block;
+    width: 100%;
+    /*height: inherit;*/
+}
+.svg-content-responsive {
+    display: inline-block;
+    position: -ms-page;
+    vertical-align: bottom;   
+    bottom: 0px;
+    left: 0;
+}
+
+/*#sliderDiv{
+    float: right;
+    font-size:10px;
+}*/
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+   .svg-content-responsive {
+       padding-top: 10%;
+    }
+    /*#sliderDiv {
+        float: right;
+        position: relative;
+        margin-bottom: 1%;
+        margin-right: 1%;
+    }*/
+}
+
+/*#dialogContainer{
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    overflow: hidden;
+    margin-top: 0px;
+    padding-bottom: 0%;
+    margin-bottom: 0px;
+}
+
+#basicDialog{
+    height: 540px !important;
+}
+
+#basicDialog3{
+    height: 115px !important;
+}*/
+
+.axis path {
+    fill:none;
+	stroke:#737373;
+    stroke-width: 2;
+    shape-rendering: crispEdges;
+}
+
+
+.axis line {
+    stroke: lightgray;
+    opacity: 0.7;
+    shape-rendering: crispEdges;
+}
+
+.domain {
+    stroke: #737373;
+    stroke-width: 2;
+    opacity: 0.5;
+    shape-rendering: crispEdges;
+}
+
+#axisX .domain {
+    fill:none;
+	stroke:#737373;
+    stroke-width: 2;
+    opacity:0.5;
+    shape-rendering: crispEdges;
+}	
+
+#axisY .domain {
+    fill:none;
+	stroke:#737373;
+    stroke-width: 2;
+    opacity:0.5;
+    shape-rendering: crispEdges;
+}		
+
+#axisX text, #axisY text {
+    font-size: 10px;
+}
+
+#axisX2 text {
+    visibility: hidden;
+    font-size: 10px;
+}
+
+
+.axisX text, .axisX2 text, .axisY text {
+    font-size: 10px;
+}
+
+.axisX2 text {
+    visibility: hidden;
+}
+
+
+
+#xaxis .domain {
+    fill:none;
+	stroke:#737373;
+    stroke-width: 2;
+    opacity:0.5;
+    shape-rendering: crispEdges;
+}	
+
+#yaxis .domain {
+    fill:none;
+	stroke:#737373;
+    stroke-width:2;
+    opacity:0.5;
+    shape-rendering: crispEdges;
+}		
+
+#xaxis text, #yaxis text {
+    font-size: 10px;
+}
+
+.xaxis text, .yaxis text, .yaxisTH text {
+    font-size: 10px;
+}
+	
+/*#bubbleSlider{
+    z-index: 100;
+}*/
+
+#labelXBubble, #labelYBubble, .labelX, .labelY, #labelYTrend, #labelXTrend, #labelYTopHitters, #labelXTopHitters, #labelYadvTopHitters, #labelXadvTopHitters, #labelYAdvancedTrend, #labelXAdvancedTrend {   /*#labelXPie, #labelYPie{*/
+    font-weight: 600;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/*.basicFilters{
+    z-index: 103;
+}
+
+.dropdown-menu{
+    left: initial;
+    position: absolute;
+    max-width: 500px;
+}*/
+
+/*TOOLTIPS*/
+    /*.line {
+    	border:5px;
+    	z-index:200;
+    	display:table;
+    	border-radius:90px;
+    	color: rgb(200,200,200);
+    	color: rgba(0,0,0,0.7);
+    }
+    .line2 {
+    	border:3px dotted #051;
+    	opacity: 0.5;
+    	z-index:1;
+    	border-radius:100%;
+    	pointer-events:none;
+    }
+    .fast {
+    	border:3px solid #051;
+    	opacity: 0.5;
+    	z-index:1;
+    	border-radius:100%;
+    	pointer-events:none;
+    }
+    .line3 {
+    	border:7px dashed #951;
+    	opacity: 0.5;
+    	z-index:1;
+    	pointer-events:none;
+    	border-radius:21px;
+    }
+    .line span {
+    	z-index: 1;
+    	background:black;
+    	color: white;
+    	opacity:0.7;
+    	position: absolute;
+    	display:block;
+    	margin: auto;
+    	padding: 0.3em 0.6em;
+    	border-radius:10px;
+    	box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+    }
+    .connection-border-right span {
+    	left: 1em;
+    }
+    .connection-border-left span {
+    	right: 1em;
+    }
+    .connection-border-top span {
+    	top: 1em;
+    }
+    .connection-border-bottom span {
+    	bottom: 1em;
+    }*/
+/*END TOOLTIPS*/
+
+/*#sliderDiv2{
+    font-size: 10px;
+}
+
+#sliderDropdownButton, #panelDropdownButton{
+    height: 32px;
+    text-align: left;
+    background-color: lightgray;
+    border-radius: 0;
+    border: 1px solid #ccc;
+    float: right;
+    font-weight: bold;
+    color: #333;
+    font-size: 11px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+#panelDropdownButton {
+    margin-right: 9px;
+}
+
+#ctGraph .axis line, #ctGraph .axis path, #bubbles .axis line, #bubbles .axis path, #testFPYGraph .axis line, #testFPYGraph .axis path {
+	stroke: #aaa;
+	shape-rendering: crispEdges;
+}
+.overlay, .overlayAdvanced {
+            fill: none;
+            stroke: none;
+            pointer-events: all;
+        }
+
+        #focusLineX, #focusLineY, #focusLineXAdvanced, #focusLineYAdvanced {
+            fill: none;
+            stroke: steelblue;
+            stroke-width: 0.5px;
+        }
+
+        .focusCircle, .focusCircleAdvanced {
+            fill: red;
+            opacity: 1;
+        }*/
+
+#trend .line, #trend path, #advancedTrendGraph .line, #advancedTrendGraph path, #trend .lineUCL, #trend .lineLCL {
+	fill: none;
+    stroke-width: 3px;
+    shape-rendering: auto;
+}
+#trend .axisY line, #trend .axisY path, #advancedTrendGraph .axisY line, #advancedTrendGraph .axisY path {
+    opacity:0.5;
+    fill:none;
+	stroke:#737373;
+    stroke-width:2;
+    shape-rendering: crispEdges;
+}
+#trend .axisX line, #trend .axisX path, #advancedTrendGraph .axisX line, #advancedTrendGraph .axisX path, .axisX2Show line, #trend .axisX2Show path {
+    opacity:0.5;
+    fill:none;
+	stroke:#737373;
+    stroke-width:2;
+    shape-rendering: crispEdges;
+}
+#trend .axisX2Hide line, #trend .axisX2Hide path {
+    opacity:0.0;
+    fill:none;
+	stroke:#737373;
+    stroke-width:2;
+    shape-rendering: crispEdges;
+}
+#trend .grid line, #advancedTrendGraph .grid line, #advancedTopHitters .grid line {
+	stroke: #808080; /*#aaa;*/
+	opacity: 0.5;
+	pointer-events: none;
+	stroke-dasharray: 2px, 2px;
+}
+#trend .centerLine line, #advancedTrendGraph .centerLine line, #advancedTopHitters .centerLine line {
+	stroke: #737373;
+	opacity: 0.5;
+	pointer-events: none;
+}
+#trend path.line, #advancedTrendGraph path.line {
+	stroke-width: 2.8px;
+	opacity: 0.5;
+}
+#trend path.lineUCL, #trend path.lineLCL {
+	stroke-width: 2px;
+	opacity: 0.5;
+}
+#trend path.line:hover, #advancedTrendGraph path.line:hover {
+	opacity: 1;
+}
+#trend .circle, #advancedTrendGraph .circle {
+	opacity: 0.5;
+}
+#trend .circle:hover, #advancedTrendGraph .circle:hover {
+	cursor: pointer;
+	opacity: 1;
+}
+
+/*#topHitters line, #topHitters path {
+	fill: none;
+}
+#topHitters .xaxis line, #topHitters .xaxis path {
+	stroke: #737373;
+	shape-rendering: crispEdges;
+    opacity:0.5;
+}
+#topHitters .yaxis line, #topHitters .yaxis path {
+	stroke: #737373;
+	shape-rendering: crispEdges;
+    opacity:0.5;
+}
+#topHitters .grid line {
+	stroke: #808080;
+	opacity: 0.5;
+	pointer-events: none;
+	stroke-dasharray: 2px, 2px;
+}
+#topHitters .centerLine line {
+	stroke: #000;
+	opacity: 0.5;
+	pointer-events: none;
+}
+#topHitters path.line {
+	stroke-width: 2px;
+	opacity: 0.5;
+}
+#topHitters path.line:hover {
+	opacity: 1;
+}
+
+#ctGraph .grid line, #bubbles .grid line, #testFPYGraph .grid line {
+	stroke: #808080;
+	opacity: 0.5;
+	pointer-events: none;
+	stroke-dasharray: 2px, 2px;
+}
+
+#ctGraph .axisY line, #ctGraph .axisY path ,#bubbles .axisY line, #bubbles .axisY path,#testFPYGraph .axisY line, #testFPYGraph .axisY path {
+	stroke: #737373;
+	shape-rendering: crispEdges;
+    opacity:0.5;
+}
+#ctGraph .axisX line, #ctGraph .axisX path, #bubbles .axisX line, #bubbles .axisX path, #testFPYGraph .axisX line, #testFPYGraph .axisX path {
+	stroke: #737373;
+	shape-rendering: crispEdges;
+    opacity: 0.5;
+}*/
+/* Hoover Buttons on Analyse Page*/
+/*.btn-circle {
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  padding: 7px 0;
+  font-size: 14px;
+  line-height: 1.42;
+  border-radius: 15px;
+}*/
+
+/*.dragdemo {
+    position: absolute;
+    width: 100px;
+    z-index: 105;
+}
+
+.btn-group{
+    display: inline-block !important;
+}
+
+div.tooltipTH {   
+  position: absolute;           
+  text-align: center;         
+  width: 110px;                  
+  height: 60px;                                 
+  background: lightGray;      
+  border-radius: 8px;           
+  pointer-events: none;  
+  display:table;       
+}
+
+.tooltipTHSpan {
+  position: relative;
+  display:table-cell;
+  vertical-align:middle; 
+  padding-top: 5px;          
+  text-align: center;
+  font: 12px sans-serif;            
+}*/
+
+/*Panel*/
+/*.panel {
+    top: 14vh;
+	width:22vw;
+	float:right;
+	height:83vh;
+    margin: 0px;
+	background:#f2f2f2;
+	position:absolute;
+}
+
+.accordion-heading{
+    width: 100%;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-left: 15px;
+    border-bottom: 5px;
+    height: 40px;
+    font-size: 13px;
+    background-color: #d3d3d3;
+    text-align:left;
+    
+    cursor:pointer;
+}
+
+.ui-draggable-dragging{ 
+    z-index: 9001 !important;
+}
+
+.accordion-inner{
+    border: 2px, solid black;
+    color: #000000;
+    padding-top: 2%;
+}
+
+.accordion-group {
+    padding-bottom: 1px;
+}
+
+.accordion-body {
+    padding-top: 10px;
+}
+
+.accordian-segment{
+    width: 100%;
+    min-height: 32px;
+    padding-left: 15px;
+    font-size: 11px;
+}
+
+.segmentLabels{
+    margin-right: 2vw;
+    float: right;
+}
+
+.separator{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.colorpicker {
+    border-width: 0px !important;
+}
+
+.bootstrap-touchspin{
+    float:right;
+    width: 32%;
+    top: -1px;
+}
+
+.cutOff{
+    display: none;
+}
+
+.cutOffResize{
+    display: none;
+}
+
+.notCutOff{
+    display: initial;
+}
+
+a.boxclose{
+    float:left;
+    margin-top:.15vh;
+    margin-left:7%;
+    cursor:pointer;
+    color: #000;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 0px;
+    padding: 10px 3px 9px 3px;  
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.fltr_summary{
+    border: 1px solid #ccc;
+}
+
+.boxclose:before {
+    content: "×";
+}*/
+/*Toolbar scroll*/
+/*.toolbar-navigation{
+    top: 0px;
+    height: 32px;
+    width: 32px;
+    position: absolute;
+}
+
+.toolbar-navigation a {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  top: 5px;
+  height: 32px;
+  width: 25px;
+  border: 0px solid #000;
+  overflow: hidden;
+  background-color: #ffffff;
+  text-indent: 100%;
+}
+.toolbar-navigation a::after {
+  content: '';
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: url(../Content/themes/base/images/cd-arrow.svg) no-repeat 0 0;
+}
+.toolbar-navigation a.prev, .prev_active {
+  left: 0;
+  opacity: 0;
+  z-index: -1;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.toolbar-navigation a.next {
+  right: 0px;
+}
+.nextDiv{
+    display: inline;
+    margin-right: 14.1vw;
+    padding-left: .34vw;
+}
+
+.prevDiv{
+    position:absolute;
+    left: 0;
+    display: inline; 
+}
+
+.next_active .prev_active{
+    width: 25px;
+}
+
+.no-touch .cd-timeline-navigation a:hover {
+  border-color: #7b9d6f;
+}
+.toolbar-navigation a.inactive {
+  cursor: not-allowed;
+}
+.toolbar-navigation a.inactive::after {
+  background-position: 0 -16px;
+}
+.no-touch .toolbar-navigation a.inactive:hover {
+  border-color: #dfdfdf;
+}
+
+.optDisable{
+    display: none !important;
+}
+
+.optEnable{
+    display: initial !important;
+}
+
+.leftSideUp {
+    margin-right: 10.5vw !important;
+    margin-top: -320px;
+    max-width: 500px;
+    max-height: 300px;
+}
+
+.leftSideDown {
+    margin-right: 10.5vw !important;
+    margin-top: -45px !important;
+    max-width: 500px;
+    max-height: 300px;
+}
+
+.rightSideUp {
+    margin-left: 10.5vw !important;
+    margin-top: -320px;
+    max-width: 500px;
+    max-height: 300px;
+}
+
+.rightSideDown {
+    margin-left: 10.5vw !important;
+    margin-top: -45px !important;
+    max-width: 500px;
+    max-height: 300px;
+}*/
+

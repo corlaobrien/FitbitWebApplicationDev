@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CloudFitbitDbModelStoreContainer" CdmEntityContainer="CloudFitbitDbEntities">
+    <EntitySetMapping Name="TempTables">
+      <EntityTypeMapping TypeName="CloudFitbitDbModel.TempTable">
+        <MappingFragment StoreEntitySet="TempTable">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pulls">
+      <EntityTypeMapping TypeName="CloudFitbitDbModel.Pull">
+        <MappingFragment StoreEntitySet="Pulls">
+          <ScalarProperty Name="Success" ColumnName="Success" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="CloudFitbitDbModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="OccupationType" ColumnName="OccupationType" />
+          <ScalarProperty Name="County" ColumnName="County" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="AutoSync" ColumnName="AutoSync" />
+          <ScalarProperty Name="RefreshToken" ColumnName="RefreshToken" />
+          <ScalarProperty Name="TokenType" ColumnName="TokenType" />
+          <ScalarProperty Name="AccessToken" ColumnName="AccessToken" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DataIntegrityTests">
+      <EntityTypeMapping TypeName="CloudFitbitDbModel.DataIntegrityTest">
+        <MappingFragment StoreEntitySet="DataIntegrityTest">
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="HourlyUpdate" FunctionName="CloudFitbitDbModel.Store.HourlyUpdate" />
+  </EntityContainerMapping>
+</Mapping>

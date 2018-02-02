@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Moving Average";
+}
+
+@section Style {
+    @Styles.Render("~/Content/css/dashboardViewModel")
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/movingAverageViewModel")
+
+    <script>
+        movingAverageModule.init();
+    </script>
+}
+
+<h2>Moving Average</h2>
+
+<div id="thresholdTrend" style="position:absolute; top:15vh; left: 1vw; width:97vw; height:82vh; background-color: white;">
+
+</div>
+

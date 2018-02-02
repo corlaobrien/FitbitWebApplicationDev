@@ -1,0 +1,462 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+@section Style {
+    @Styles.Render("~/Content/css/dashboardViewModel")
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/dashboardHomeViewModel")
+
+    <script>
+        dashboardModule.init();
+
+        $(".users").css("margin-top", "3px !important");
+        $(".users").css("margin-left", "3px !important");
+    </script>
+}
+
+
+<div id="pageContainer" class="container-fluid" style="margin-top:40px;">
+    <div id="dashboardContainer">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <button class="btn btn-xs btn-default" style="margin-right: 8px;" data-bind="click: function() {openUserSettings()}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></button>
+                                <span data-bind="text: userType"></span>s
+                            </div>
+                            <div class="col-lg-5 pull-right">
+                                <button class="btn btn-xs btn-default pull-right" style="margin-right: 8px;" data-bind="click: function() {openUsersFilter()}"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></button>
+                                @*<select data-bind="options: comparisons, value: selectedComparison, optionsText: 'text', optionsValue: 'value'" class="form-control" style="height:20px;padding:0;width:90%;"></select>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                    <th>Occupation Type</th>
+                                    <th></th> @*<button class="btn btn-xs btn-default pull-right" data-bind="click: function() {openUsersFilter()}"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></button>*@
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: usersFiltered">
+                                <tr>
+                                    <td><i class="fa fa-circle" data-bind="style: {color: status().color}"></i></td>
+                                    <td data-bind="text: firstName"></td>
+                                    <td data-bind="text: emailAddress"></td>
+                                    <td data-bind="text: age"></td>
+                                    <td data-bind="text: gender"></td>
+                                    <td data-bind="text: occupationType"></td>
+                                    <td><button class="btn btn-xs btn-success pull-right" data-bind="click: function($data) {$parent.goToUser($data)}"><span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-lg-7">
+                                Statistics
+                            </div>
+                            <div class="col-lg-5 pull-right">
+                                <button class="btn btn-xs btn-default pull-right" style="margin-right: 8px;" data-bind="click: function() {openChartSettings()}"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></button>
+                                @*<select data-bind="options: comparisons, value: selectedComparison, optionsText: 'text', optionsValue: 'value'" class="form-control" style="height:20px;padding:0;width:90%;"></select>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div><span data-bind="text: dashboardStatisticsHeading"></span></div>
+                        <div id="pieChart" style="width:44vw; height:70vh; background-color: white;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="heartRateContainer" class="col-lg-12 col-md-12" style="visibility: collapse; top: 60px; right: 2px; position: fixed; overflow:hidden;">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <span>Heart Rate Graph</span>
+                                
+                            </div>
+                            
+
+                            <div class="col-lg-5 pull-right">
+                                
+                                <button class="btn btn-xs btn-default pull-right" style="margin-right: 8px;" data-bind="click: function() {openHRGraphSettings()}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></button>
+                                @*<select id="userDropdown" multiple="multiple" data-bind="options: userEmailAddresses, selectedOptions: selectedUsers" style="margin-top:3px;"></select>*@
+                                <button class="btn btn-xs btn-default pull-right" data-bind="click: function() { backToDashboard() }" style="margin-right: 3px;"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
+                                @*<select data-bind="options: comparisons, value: selectedComparison, optionsText: 'text', optionsValue: 'value'" class="form-control" style="height:20px;padding:0;width:90%;"></select>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body" style="height: 82vh">
+                        <div id="trend" style="position:absolute; background-color: white; width:95vw; height:80vh;"> @*top:15vh; left: 1vw; width:97vw; height:82vh;*@
+
+                        </div>
+
+                        <div id="thresholdTrend" style="position:absolute; background-color: white; width:95vw; height:80vh;"> @*top:15vh; left: 1vw; width:97vw; height:82vh;*@ 
+
+                        </div>
+
+                        <div id="multiLineTrend" style="position:absolute; background-color: white; width:88vw; height:80vh;"> @*top:15vh; left: 1vw; width:90vw; height:82vh;*@
+
+                        </div>
+                        <div id="multiLineLegend" style="position:absolute; background-color: white; height:80vh; left: 91vw"></div> @*top:15vh; left: 91vw; height:82vh;*@ 
+
+                        <div id="liveTrendYAxis" style="position:absolute; top:5.5vh; left: 2vw; width:3vw; height:82vh; background-color: white;">
+
+                        </div>
+                        <div id="liveTrend" style="position:absolute; top:5.5vh; left: 6vw; width:91vw; height:82vh; background-color: white; ">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="saveAnnotation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">Save Annotation</h3>
+                </div>
+                <div class="modal-body">
+                    <table class="analysisSettingTable table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Description
+                                </td>
+                                <td>
+                                    <textarea data-bind="value: annotationDescription, valueUpdate: 'afterkeydown'" class="form-control"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Tags
+                                </td>
+                                <td>
+                                    <select class="form-control" id="tagsSelection" multiple="multiple" style="width:100%;" data-bind="value: tag">
+                                        <option value="CardiovascularExercise">Cardiovascular Exercise</option>
+                                        <option value="LightCardiovascularExercise">Light Cardiovascular Exercise</option>
+                                        <option value="StrenuousCardiovascularExercise">Strenuous Cardiovascular Exercise</option>
+                                        <option value="Working">Working</option>
+                                        <option value="StrenuousWork">Strenuous Work</option>
+                                        <option value="LightWork">Light Work</option>
+                                        <option value="IdleWork">Idle Work</option>
+                                        <option value="OffWork">Off Work</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="confirmSaveAnnotation" data-bind="click: function() {confirmSaveAnnotation()}">Save</button>
+                    <a class="btn btn-default" data-dismiss="modal">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="usersFilter">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">Analyse <span data-bind="text: userType"></span>s</h3>
+                </div>
+                <div class="modal-body">
+                    <h4>Select the conditions for analysis:</h4>
+
+                    <table class="analysisSettingTable table">
+                        <tbody>
+                            <tr>
+                                <td>Age</td>
+                                <td>
+                                    <div style="width:100%;">
+                                        <input class="form-control pull-left" style="width:30%;" type="text" data-bind="value: ageStart" />
+                                        <span class="pull-left" style="width:10%; height: 20px; padding-left:18px; font-size: 20px; border:none;">  -  </span>
+                                        <input class="form-control pull-left" style="width:30%;" type="text" data-bind="value: ageEnd" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Gender</td>
+                                <td><select class="form-control" style="width:70%;" data-bind="value: genderFilter"><option>None</option><option>Male</option><option>Female</option></select></td>
+                            </tr>
+                            <tr>
+                                <td>Occupation Type</td>
+                                <td><select class="form-control" style="width:70%;" data-bind="value: occupationFilter"><option>None</option><option>Sedentary</option><option>Active</option></select></td>
+                            </tr>
+                            <tr>
+                                <td>Number of Sessions</td>
+                                <td><select id="numberSessions" class="form-control" style="width:70%;" data-bind="value: numberofSessions"><option>All</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>> 4</option></select></td>
+                            </tr>
+                            <tr>
+                                <td>bpm</td>
+                                <td>
+                                    <select class="form-control pull-left" style="width: 30%;" data-bind="value: thresholdOperation">
+                                        <option>></option>
+                                        <option><</option>
+                                    </select>
+                                    <span class="pull-left" style="width:10%; height: 20px; padding-left:18px; font-size: 20px; border:none;"></span>
+                                    <input type="text" style="width: 30%;" class="form-control" data-bind="value: thresholdValue" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bind="click: function() {filterUsers()}">Filter</button>
+                    <a class="btn btn-default" data-dismiss="modal">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="modal fade" id="thresholdSettings">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">Threshold Analysis</h3>
+                </div>
+                <div class="modal-body">
+                    <h4>Select the appropriate threshold for analysis:</h4>
+
+                    <table class="analysisSettingTable table">
+                        <tbody>
+                            <tr>
+                                <td>bpm</td>
+                                <td>
+                                    <select class="form-control" style="height: 20px; padding: 0;" data-bind="value: thresholdOperation">
+                                        <option>></option>
+                                        <option><</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" style="height: 20px; padding: 0; width: 40%;" class="form-control" data-bind="value: thresholdValue" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bind="click: function() {applyThresholdAnalysis()}">Apply</button>
+                    <a class="btn btn-default" data-dismiss="modal">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+    <div class="modal fade" id="userSettings">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title"><span data-bind="text: userType"></span> Settings</h3>
+                </div>
+                <div class="modal-body">
+
+                    <table class="analysisSettingTable table">
+                        <tbody>
+                            <tr>
+                                <td>Type of User</td>
+                                <td>
+                                    <select class="form-control" data-bind="value: userType">
+                                        <option>User</option>
+                                        <option>Client</option>
+                                        <option>Patient</option>
+                                        <option>Truck Driver</option>                                        
+                                        <option>Student</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: users()">
+                            <tr>
+                                <td data-bind="text: firstName"></td>
+                                <td data-bind="text: emailAddress"></td>                                
+                                <td><button class="btn btn-xs btn-danger pull-right" data-bind="click: function($data) {$parent.removeUser($data)}"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div style="margin-bottom: 50px;">
+                        <button class="btn btn-sm btn-success pull-left" data-bind="click: function($data) {addUser()}">Add <span data-bind="text: userType"></span></button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-dismiss="modal">Ok</button>
+                    <a class="btn btn-default" data-dismiss="modal">Cancel</a>                                        
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addUser">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">Add <span data-bind="text: userType"></span></h3>
+                </div>
+                <div class="modal-body">
+                    <h4>Please insert the email address of the user to add:</h4>
+
+                    <table class="analysisSettingTable table">
+                        <tbody>
+                            <tr>
+                                <td>Email Address</td>
+                                <td><span><input type="text" class="form-control" data-bind="value: emailAddressToAdd" /></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bind="click: function() {saveUserSettings()}">Save</button>
+                    <a class="btn btn-default" data-dismiss="modal">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="physicianHomePageChartSettings">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">Chart Settings</h3>
+                </div>
+                <div class="modal-body">
+                    <h4>Select chart settings:</h4>
+
+                    <table class="analysisSettingTable table">
+                        <tbody>
+                            <tr>
+                                <td>Tag Source</td>
+                                <td>
+                                    <select class="form-control" id="tagSource" multiple="multiple" style="width:70%;" data-bind="value: selectedTags">
+                                        <option value="CardiovascularExercise">Cardiovascular Exercise</option>
+                                        <option value="LightCardiovascularExercise">Light Cardiovascular Exercise</option>
+                                        <option value="StrenuousCardiovascularExercise">Strenuous Cardiovascular Exercise</option>
+                                        <option value="Working">Working</option>
+                                        <option value="StrenuousWork">Strenuous Work</option>
+                                        <option value="LightWork">Light Work</option>
+                                        <option value="IdleWork">Idle Work</option>
+                                        <option value="OffWork">Off Work</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Chart Type</td>
+                                <td>
+                                    <select data-bind="value: selectedChartType" class="form-control" style="width:70%;" >
+                                        <option value="summary">Summary</option>
+                                        <option value="breakdown">Breakdown By Demographic</option>
+                                        <option value="multidimension">Multi-dimension Graph</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr data-bind="visible: selectedChartType() == 'breakdown'">
+                                <td>Breakdown By</td>
+                                <td>
+                                    <select data-bind="value: breakdownXAxis" class="form-control" style="width:70%;" >
+                                        <option value="age">Age</option>
+                                        <option value="gender">Gender</option>
+                                        <option value="occupationType">Occupation Type</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Data Stream</td>
+                                <td><button type="button" class="btn btn-default" name="dateRangeHomePage" style="margin-top:3px;width:70%;">Data Stream</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bind="click: function() {applyChartSettings()}">Apply</button>
+                    <a class="btn btn-default" data-dismiss="modal">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="hrGraphSettings">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">Analysis</h3>
+                </div>
+                <div class="modal-body">
+                    <table class="analysisSettingTable table">
+                        <tbody>
+                            <tr>
+                                <td style="width: 30%;">Data Stream</td>
+                                <td style="width: 70%;">
+                                    <button id="daterange" type="button" class="btn btn-default" style="margin-top:3px; width:80%;" data-bind="text: dateRangeSelected()"></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 30%;">
+                                    Threshold Analysis
+                                </td>
+                                <td style="width: 70%;">
+                                    <button type="button" class="btn btn-default" name="threshold" style="margin-top:3px;margin-left: 3px; width:80%;" data-bind="click: switchThresholdGraph, enable: !showingLiveChart(), text: thresholdAnalysis(), css: {'btn-success': thresholdAnalysis() == 'On', 'btn-default': thresholdAnalysis() == 'Off'}"></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 30%;">Threshold Limit</td>
+                                <td style="width: 70%;">
+                                    <span><input type="text" style="width:80%;" class="form-control" data-bind="value: hrThreshold, enable: thresholdAnalysis() == 'On'" /></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bind="click: function() {saveHRGraphSettings()}">Update Chart</button>
+                    <a class="btn btn-default" data-dismiss="modal">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

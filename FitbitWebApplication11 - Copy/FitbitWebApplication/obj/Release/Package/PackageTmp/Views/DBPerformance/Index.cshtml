@@ -1,0 +1,66 @@
+﻿@*@model List<FitbitWebApplication.Models.DBPerformanceResult>*@
+@section scripts {
+    @Scripts.Render("~/bundles/dbPerformanceViewModel")
+
+    <script>
+        DBPerformanceModule.init();        
+    </script>
+}
+
+
+<h2>DB VM Performance</h2>
+
+<div id="dbPerformanceContainer">
+
+    <p>Number of calls : <input type="text" id="noOfCalls" data-bind="value: noOfCalls" /></p>
+
+    <p>Number of rounds : <input type="text" id="noOfCalls" data-bind="value: noOfRounds" /></p>
+
+    <p>Wait between rounds : <input type="text" id="noOfCalls" data-bind="value: wait" /></p>
+
+    <p>Db Instance : <select data-bind="value: dbInstance"><option>Micro</option><option>Small</option><option>Medium</option></select></p>
+
+    <p><button class="btn btn-primary" data-bind="click: function() { runPerformanceTest() }">Run Test</button></p>
+
+    <table class="table table-striped">
+
+            <thead>
+                <tr>
+                    <td>Date/Time</td>
+                    <td>File Name</td>
+                </tr>
+            </thead>
+
+            <tbody data-bind="foreach:files()">
+                <tr>
+                    <td data-bind="text: CreationDate"></td>
+                    <td><a data-bind="text: FileName, click: function() { $parent.prepareFile(FilePath, FileName) }" /></td>
+                </tr>
+            </tbody>
+
+        </table>
+
+
+
+    @*<table class="table table-striped">
+
+        <thead>
+            <tr>
+                <td>Total Seconds</td>
+                <td>Start of Request</td>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.timeDifference</td>
+                <td>@item.startTime.@item.millisecond</td>
+            </tr>
+        }
+
+    </table>*@
+
+
+
+</div>
